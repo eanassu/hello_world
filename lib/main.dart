@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/segunda_tela.dart';
 
 void main() {
   runApp(const MyApp());
@@ -72,6 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'A soma é: $soma',
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                // Navega para a SecondScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                );
+              },
+              child: const Text('Ir para a Segunda Tela'),
             ),
           ],
         ),
