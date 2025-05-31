@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/segunda_tela.dart';
+import 'package:hello_world/tip_calculator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,12 +36,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void calcularSoma() {
     setState(() {
-      soma = int.parse(_controller1.text) + int.parse(_controller2.text);    });
+      soma = int.parse(_controller1.text) + int.parse(_controller2.text);    
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(Colors.blue.value),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
@@ -48,7 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          spacing: 20,
           children: <Widget>[
+            SizedBox(height: 15),
             TextField(
               controller: _controller1, 
               decoration: InputDecoration(
@@ -69,12 +74,12 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: calcularSoma,
               child: Text('Somar')
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 5),
             Text(
               'A soma é: $soma',
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 5),
             ElevatedButton(
               onPressed: () {
                 // Navega para a SecondScreen
@@ -85,9 +90,21 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Ir para a Segunda Tela'),
             ),
+            const SizedBox(height: 5),
+            ElevatedButton(
+              onPressed: () {
+                // Navega para a SecondScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TipCalculator()),
+                );
+              },
+              child: const Text('Ir para a Calculadora de Gorjeta'),
+            ),
           ],
         ),
       ),
+    
     );
   }
 }
