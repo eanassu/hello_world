@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TipCalculator extends StatefulWidget {
   const TipCalculator({super.key});
@@ -7,14 +8,18 @@ class TipCalculator extends StatefulWidget {
   State<TipCalculator> createState() => _TipCalculatorState();
 }
 class _TipCalculatorState extends State<TipCalculator> {
-  double currentSliderValue = 20.0;
-  double currentDiscreteSliderValue = 60;
-   bool year2023 = true;
+  double _currentSliderValue = 20.0;
+  double _valor = 0.0;
+  double _gorjeta = 0.0;
+  double _valorTotal = 0.0;
+  bool _year2023 = true;
+  final TextEditingController _controller1 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculadora de Gorjeta'),
+        
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
@@ -25,28 +30,51 @@ class _TipCalculatorState extends State<TipCalculator> {
               'Este é a calculadora de gorjeta!',
               style: TextStyle(fontSize: 20),
           ),
-              Slider(
-              year2023: year2023,
-              value: currentSliderValue,
-              max: 100,
+          TextField(
+              keyboardType: TextInputType.number,
+              controller: _controller1,
+              onChanged: (value) {
+                setState(() {
+                  _valor = double.tryParse(value) ?? 0.0;
+                  _valor /= 100.0;
+                  _gorjeta = (_valor * _currentSliderValue / 100);
+                  _valorTotal = _valor + _gorjeta;
+                });
+              }, 
+              decoration: InputDecoration(
+                labelText: 'Digite o valor',
+                hintText: 'valor',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          Text(
+            'Valor: ${NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$').format(_valor)}',
+            style: TextStyle(fontSize: 20),
+          ),
+          Text(
+            'Gorjeta: ${NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$').format(_gorjeta)}',
+            style: TextStyle(fontSize: 20),
+          ),
+          Text(
+            'Total: ${NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$').format(_valorTotal)}',
+            style: TextStyle(fontSize: 20),
+          ),
+          Slider(
+              year2023: _year2023,
+              value: _currentSliderValue,
+              max: 30,
               onChanged: (double value) {
                 setState(() {
-                  currentSliderValue = value;
+                  _currentSliderValue = value;
+                  _gorjeta = (_valor * _currentSliderValue / 100);
+                  _valorTotal = _valor + _gorjeta;
                 });
               },
             ),
-            Slider(
-              year2023: year2023,
-              value: currentDiscreteSliderValue,
-              max: 100,
-              divisions: 5,
-              label: currentDiscreteSliderValue.round().toString(),
-              onChanged: (double value) {
-                setState(() {
-                  currentDiscreteSliderValue = value;
-                });
-              },
-            ),
+          Text(
+            'Porcentagem: ${_currentSliderValue.toStringAsFixed(1)}%',
+            style: TextStyle(fontSize: 20),
+          ),
             const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
