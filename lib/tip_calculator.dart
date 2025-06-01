@@ -27,7 +27,7 @@ class _TipCalculatorState extends State<TipCalculator> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Este é a calculadora de gorjeta!',
+              'Esta é a calculadora de gorjeta!',
               style: TextStyle(fontSize: 20),
           ),
           TextField(
