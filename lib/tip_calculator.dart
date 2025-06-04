@@ -8,7 +8,7 @@ class TipCalculator extends StatefulWidget {
   State<TipCalculator> createState() => _TipCalculatorState();
 }
 class _TipCalculatorState extends State<TipCalculator> {
-  double _currentSliderValue = 20.0;
+  double _currentSliderValue = 15;
   double _valor = 0.0;
   double _gorjeta = 0.0;
   double _valorTotal = 0.0;
@@ -65,14 +65,14 @@ class _TipCalculatorState extends State<TipCalculator> {
               max: 30,
               onChanged: (double value) {
                 setState(() {
-                  _currentSliderValue = value;
+                  _currentSliderValue = value.round().toDouble();
                   _gorjeta = (_valor * _currentSliderValue / 100);
                   _valorTotal = _valor + _gorjeta;
                 });
               },
             ),
           Text(
-            'Porcentagem: ${_currentSliderValue.toStringAsFixed(1)}%',
+            'Porcentagem: ${_currentSliderValue.toStringAsFixed(0)}%',
             style: TextStyle(fontSize: 20),
           ),
             const SizedBox(height: 30),
