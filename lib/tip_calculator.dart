@@ -12,7 +12,7 @@ class _TipCalculatorState extends State<TipCalculator> {
   double _valor = 0.0;
   double _gorjeta = 0.0;
   double _valorTotal = 0.0;
-  bool _year2023 = true;
+  final bool _year2023 = true;
   final TextEditingController _controller1 = TextEditingController();
   @override
   Widget build(BuildContext context) {
