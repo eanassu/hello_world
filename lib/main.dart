@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/home_screen.dart';
 import 'package:hello_world/segunda_tela.dart';
+import 'package:hello_world/sensores.dart';
 import 'package:hello_world/tip_calculator.dart';
 
 
@@ -131,6 +132,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: const Text('Ir para Banco de Dados'),
+            ),
+            const SizedBox(height: 5),
+            ElevatedButton(
+              onPressed: () {
+                // Navega para a SecondScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SensorsScreen()),
+                );
+              },
+              child: const Text('Ir para Teste de Sensores'),
             ),
           ],
         ),
