@@ -22,7 +22,9 @@ Fora estas referências, estou fazendo a aplicação com as seguintes caracterí
 - Uma tela para manipulação de banco de dados interno
     Para esta tela funcionar na WEB, além das dependências colocadas no pubspec.yaml, é necessário instalar
     o banco de dados local versão WEB com o comando:
+  
   dart run sqflite_common_ffi_web:setup
+
   As versões desktop e mobile não necessitam disso
 - Uma tela para Manipulação dos sensores do celular (funcionaria somente com emulador)
 - Tela para desenho com toque
