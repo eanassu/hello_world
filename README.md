@@ -17,15 +17,15 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 Fora estas referências, estou fazendo a aplicação com as seguintes características:
-Uma tela simples de cálculo
-Uma tela com slider para cálculo de gorjeta
-Uma tela para manipulação de banco de dados interno
-  Para esta tela funcionar na WEB, além das dependências colocadas no pubspec.yaml, é necessário instalar
-  o banco de dados local versão WEB com o comando:
+- Uma tela simples de cálculo
+- Uma tela com slider para cálculo de gorjeta
+- Uma tela para manipulação de banco de dados interno
+    Para esta tela funcionar na WEB, além das dependências colocadas no pubspec.yaml, é necessário instalar
+    o banco de dados local versão WEB com o comando:
   dart run sqflite_common_ffi_web:setup
   As versões desktop e mobile não necessitam disso
-Uma tela para Manipulação dos sensores do celular (funcionaria somente com emulador)
-Tela para desenho com toque
-Tela usando Maps
+- Uma tela para Manipulação dos sensores do celular (funcionaria somente com emulador)
+- Tela para desenho com toque
+- Tela usando Maps (em desenvolvimento)
 
 Sugestões são bem vindas: eanassu@gmail.com
