@@ -4,6 +4,7 @@ import 'package:hello_world/segunda_tela.dart';
 import 'package:hello_world/sensores.dart';
 import 'package:hello_world/tip_calculator.dart';
 import 'package:hello_world/desenho.dart';
+import 'package:hello_world/map_screen.dart';
 
 
 // Importe o seu DatabaseHelper
@@ -97,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: calcularSoma,
               child: Text('Somar')
             ),
-            const SizedBox(height: 5),
+
             Text(
               'A soma é: $soma',
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -151,6 +152,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: const Text('Ir para Teste de Desenho'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MapScreen()),
+                );
+              },
+              child: const Text('Ir para o Mapa'),
             ),
           ],
         ),
